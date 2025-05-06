@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pixelate an Image</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <style>
+        body {
+            max-width: 800px;
+            margin: auto;
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .pixelated-container {
+            border: 1px solid #ddd;
+            padding: 1em;
+            margin-top: 1em;
+            background: #f9f9f9;
+        }
+        pre {
+    background: #111;
+    color: #eee;
+    padding: 1em;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    min-height: 200px;
+    max-height: 400px;
+    border-radius: 4px;
+}
+        h1, h2 {
+            text-align: center;
+        }
+        footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.9em;
+            color: #888;
+            padding: 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pixelate an Image</h1>
+
+    <form method="post" class="flex one">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="primary">Submit</button>
+    </form>
+
+    {% if result_html %}
+        <h2>Pixelated Image:</h2>
+        <div class="pixelated-container">{{ result_html|safe }}</div>
+    {% endif %}
+
+    {% if json_string %}
+    <div style="clear: both;"></div> <!-- ADD THIS LINE -->
+    <h2>Pixel Data (JSON):</h2>
+    <pre>{{ json_string }}</pre>
+{% endif %}
+
+
+    <footer>
+        &copy; {{ now.year }} Arvind S.A.
+    </footer>
+</body>
+</html>
