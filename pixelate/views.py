@@ -20,11 +20,11 @@ def on_publish(client, userdata, mid):
 
 def publish_to_mqtt(json_data):
     # MQTT connection details
-    mqtt_broker = "d970b1e5.ala.asia-southeast1.emqxsl.com"
+    mqtt_broker = "*****"
     mqtt_port = 8883
     mqtt_topic = "device/esp32/commands"  # Adjust topic as needed
-    mqtt_username = "test1"  # If required
-    mqtt_password = "test1"  # If required
+    mqtt_username = "***"  # If required
+    mqtt_password = "***"  # If required
 
     # Create MQTT client
     client = mqtt.Client()
